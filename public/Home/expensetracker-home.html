@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    </head>
+
+
+    <style>
+    </style>
+    <title>
+        Expense Tracker
+    </title>
+
+    <body style="background-color: rgb(125, 117, 103);">
+      <button style="text-align:right; background-color: red; margin-top: 10px;margin-left: 10px;" onclick="logout(event)">Log Out</button>
+      <div class="col-12 text-center mt-4" >
+        <button class="btn btn-primary float-" id="razorpay-button">Buy Premium</button> <br>
+        <div id="premium-message"></div>
+        <a href="../Report-generation/report-generation.html"><button type="button" class="btn btn-primary">Generate Report</button></a>
+        <button type="button" class="btn btn-primary" id="download-expenses-button">Download Expenses</button>
+        <button type="button" class="btn btn-primary" id="show-old-downloads-button">Show Previous Downloads</button>
+      </div>
+
+
+      
+      <div class="col-md-12 text-center">
+        
+      </div>
+      
+        <section class="container my-20 bg-dark w-50 text-light p-2" style="margin-top:60px; padding-bottom: 200px; ">
+            <form class="row g-3" onsubmit="saveExpenseToDatabase(event)">
+
+                <div class="col-12">
+                    <label for="amount" class="form-label">Expense Amount</label> 
+                    <input type="number" class="form-control" id="amount" >
+                  </div>
+                  
+                <div class="col-12">
+                  <label for="description" class="form-label">Description</label>
+                  <input type="text" class="form-control" id="description" >
+                </div>
+                
+                <div class="col-12">
+                    <label for="category">Choose a category:</label><br>
+                    <select style="width:100%;" class="form-select" aria-label="Default select example" id="category">
+                        <option selected>Choose category</option>
+                        <option value="fuel">Fuel</option>
+                        <option value="food">Food</option>
+                        <option value="electricity">Electricty</option>
+                        <option value="movie">Movie</option>
+                        <option value="movie">Shopping</option>
+                        <option value="movie">Party</option>
+                        <option value="movie">Parking</option>
+                        <option value="movie">Clothes</option>
+                        <option value="movie">Groceries</option>
+                        <option value="movie">Gadgets</option>
+                        <option value="movie">Furniture</option>
+                        <option value="movie">Others</option>
+                      </select>
+                </div>
+                
+                <div class="col-12 text-center mt-4" >
+                  <button type="submit" class="btn btn-primary float-" >Add Expense</button>
+                </div>
+              </form>
+              <br> <br>
+
+              <div class="col-md-12 text-center">
+                <a href="../Login/login.html"><button type="button" class="btn btn-primary">Login Page</button></a> 
+              </div>
+
+              <div style="text-align:center; padding-bottom: 80px;">
+              <h2 style="text-align:center; text-decoration: underline; padding-top: 40px;">List of Expenses</h2>
+              
+                  <select id="NumberofRecords" >
+                  <option value="none" selected disabled hidden>
+                      Select an Option </option>
+                  <option value="3">3</option>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="30">30</option>
+                  <option value="50">50</option>
+                  </select> 
+                  <button class="btn btn-secondary" onclick="setCountInLocalStorage()">
+                      Get
+                  </button>
+            </div>
+              
+              <div id="list" style="text-align:center;">
+
+              </div>
+              <div id="pagination" style="text-align:center;"></div>
+        </section>
+        <div id="message" style="text-align: center;">
+
+        </div>
+        <div id="leader-board" style="text-align:center; background-color: antiquewhite; margin-top:30px;"></div>
+        <div id="previous-downloads" style="text-align:center; margin-top: 20px; background-color: lightblue;"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- Including axios library -->
+
+<script src="expensetracker-home.js"></script>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<!-- Including razorpay library -->
+
+
+</body>
+</html>
